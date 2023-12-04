@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-shirt Customization</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #customization-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #tshirt {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+
+    #user-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+    }
+
+    #user-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #customize-options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    #text-input {
+      width: 60%;
+      padding: 8px;
+    }
+
+    #add-text-btn {
+      width: 30%;
+      padding: 8px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #add-image-btn {
+      width: 100%;
+      padding: 8px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="customization-container">
+    <div id="tshirt">
+      <div id="user-text">Your Text Here</div>
+      <img id="user-image" src="placeholder.jpg" alt="T-shirt Image">
+    </div>
+
+    <div id="customize-options">
+      <input type="text" id="text-input" placeholder="Enter text">
+      <button id="add-text-btn" onclick="addText()">Add Text</button>
+    </div>
+
+    <div id="customize-options">
+      <input type="file" id="image-input" accept="image/*">
+      <button id="add-image-btn" onclick="addImage()">Add Image</button>
+    </div>
+  </div>
+
+  <script>
+    function addText() {
+      var userInput = document.getElementById("text-input").value;
+      document.getElementById("user-text").innerText = userInput;
+    }
+
+    function addImage() {
+      var input = document.getElementById("image-input");
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        document.getElementById("user-image").src = e.target.result;
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  </script>
+
+</body>
+</html>
